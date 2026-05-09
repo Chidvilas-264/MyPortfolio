@@ -148,7 +148,7 @@ export default function Skills() {
                             </div>
                             <div className="md:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
                                 {groupedSkills[category].map(s => (
-                                    <motion.div key={s.id} variants={itemVariants} className="relative group border-b border-stone-200 dark:border-white/10 pb-4">
+                                    <motion.div key={s.id} variants={itemVariants} className="relative group border-b border-stone-200 dark:border-white/10 pb-2">
                                         <div className="flex justify-between items-center group">
                                             <div className="flex items-center gap-3">
                                                 <span className="text-sm font-bold text-stone-800 dark:text-stone-200 uppercase tracking-widest leading-none">{s.name}</span>
