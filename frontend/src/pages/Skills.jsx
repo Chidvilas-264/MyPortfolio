@@ -142,7 +142,7 @@ export default function Skills() {
             <div className="space-y-24">
                 {Object.keys(groupedSkills).map((category) => (
                     <motion.div key={category} variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} className="relative">
-                        <div className="flex flex-col md:flex-row gap-12">
+                        <div className="flex flex-col md:flex-row gap-12 items-start">
                             <div className="md:w-1/4">
                                 <motion.h3 variants={itemVariants} className="text-3xl font-bold uppercase tracking-tighter text-stone-900 dark:text-white sticky top-32">{category}</motion.h3>
                             </div>
