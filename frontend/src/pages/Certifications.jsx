@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Plus, Edit2, Trash2, X, Image as ImageIcon, Award } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
