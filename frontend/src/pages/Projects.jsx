@@ -22,7 +22,14 @@ export default function Projects() {
     const fetchProjects = async () => {
         setLoading(true);
         const { data } = await supabase.from('projects').select('*').order('id', { ascending: false });
-        if (data) setProjects(data);
+        if (data) {
+            setProjects(data.map(p => ({
+                ...p,
+                githubLink: p.github_link,
+                demoLink: p.demo_link,
+                techStack: p.tech_stack
+            })));
+        }
         setLoading(false);
     };
 
@@ -43,12 +50,20 @@ export default function Projects() {
                 if (data) imageUrl = supabase.storage.from('project-images').getPublicUrl(data.path).data.publicUrl;
             }
 
-            const projData = { ...form, image_url: imageUrl };
+            const projData = { 
+                title: form.title,
+                description: form.description,
+                category: form.category,
+                github_link: form.githubLink,
+                demo_link: form.demoLink,
+                tech_stack: form.techStack,
+                image_url: imageUrl 
+            };
+            
             if (form.id) {
                 await supabase.from('projects').update(projData).eq('id', form.id);
             } else {
-                const { id, ...newProj } = projData;
-                await supabase.from('projects').insert([newProj]);
+                await supabase.from('projects').insert([projData]);
             }
 
             fetchProjects();
