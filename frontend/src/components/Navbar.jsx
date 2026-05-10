@@ -31,9 +31,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
     const links = [
         { name: 'Skills', path: '/skills' },
-        { name: 'Experience', path: '/experience' },
-        { name: 'Projects', path: '/projects' },
         { name: 'Certifications', path: '/certifications' },
+        { name: 'Projects', path: '/projects' },
+        { name: 'Experience', path: '/experience' },
         { name: 'Achievements', path: '/achievements' }
     ];
 
