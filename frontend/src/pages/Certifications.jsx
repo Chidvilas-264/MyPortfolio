@@ -132,7 +132,7 @@ export default function Certifications() {
                 </div>
             )}
 
-            <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="text-center mb-24">
+            <motion.div variants={itemVariants} initial="hidden" animate="visible" className="text-center mb-24">
                 <h1 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter mb-4 text-stone-900 dark:text-white">
                     Verified <span className="text-stone-400">Credentials</span>
                 </h1>
@@ -153,7 +153,7 @@ function CertCard({ c, isAdmin, editCert, deleteCert, itemVariants }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="relative group border-b border-stone-200 dark:border-white/10 pb-12">
+        <motion.div variants={itemVariants} initial="hidden" animate="visible" className="relative group border-b border-stone-200 dark:border-white/10 pb-12">
             {isAdmin && (
                 <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onClick={() => editCert(c)} className="p-2 bg-white dark:bg-black text-stone-800 dark:text-stone-200 rounded-sm shadow-xl hover:scale-110 transition-transform"><Edit2 size={16}/></button>

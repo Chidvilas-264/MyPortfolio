@@ -150,7 +150,7 @@ function ProjectCard({ p, isAdmin, editProject, deleteProject, itemVariants }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="group relative border-b border-stone-200 dark:border-white/10 pb-12">
+        <motion.div variants={itemVariants} initial="hidden" animate="visible" className="group relative border-b border-stone-200 dark:border-white/10 pb-12">
             {isAdmin && (
                 <div className="absolute top-2 right-2 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onClick={() => editProject(p)} className="p-2 bg-white/90 dark:bg-black/90 text-stone-800 dark:text-stone-200 rounded-sm shadow hover:scale-110 transition-transform"><Edit2 size={16}/></button>
