@@ -17,7 +17,7 @@ export default function Certifications() {
     };
 
     const fetchCerts = async () => {
-        const { data } = await supabase.from('certifications').select('*').order('date', { ascending: false });
+        const { data } = await supabase.from('certifications').select('*').order('title', { ascending: true });
         if (data) {
             setCerts(data.map(c => ({
                 ...c,
