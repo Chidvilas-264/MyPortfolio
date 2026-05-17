@@ -11,7 +11,7 @@ export default function Projects() {
     const [loading, setLoading] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
     
-    const [form, setForm] = useState({ id: null, title: '', description: '', category: 'Software', githubLink: '', demoLink: '', techStack: '', image_url: '' });
+    const [form, setForm] = useState({ id: null, title: '', description: '', githubLink: '', demoLink: '', techStack: '', image_url: '' });
     const [imageFile, setImageFile] = useState(null);
 
     const checkAdmin = async () => {
@@ -53,7 +53,6 @@ export default function Projects() {
             const projData = { 
                 title: form.title,
                 description: form.description,
-                category: form.category,
                 github_link: form.githubLink,
                 demo_link: form.demoLink,
                 tech_stack: form.techStack,
@@ -68,7 +67,7 @@ export default function Projects() {
 
             fetchProjects();
             setShowModal(false);
-            setForm({ id: null, title: '', description: '', category: 'Software', githubLink: '', demoLink: '', techStack: '', image_url: '' });
+            setForm({ id: null, title: '', description: '', githubLink: '', demoLink: '', techStack: '', image_url: '' });
             setImageFile(null);
         } catch (err) {
             console.error(err);
@@ -101,7 +100,7 @@ export default function Projects() {
     return (
         <motion.div initial="hidden" animate="visible" variants={containerVariants} className="max-w-6xl mx-auto relative">
             {isAdmin && (
-                <button onClick={() => {setForm({ id: null, title: '', description: '', category: 'Software', githubLink: '', demoLink: '', techStack: '' }); setImageFile(null); setShowModal(true);}} className="fixed bottom-8 right-8 z-50 bg-stone-900 hover:bg-stone-800 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110">
+                <button onClick={() => {setForm({ id: null, title: '', description: '', githubLink: '', demoLink: '', techStack: '' }); setImageFile(null); setShowModal(true);}} className="fixed bottom-8 right-8 z-50 bg-stone-900 hover:bg-stone-800 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110">
                     <Plus size={24}/>
                 </button>
             )}
@@ -115,11 +114,6 @@ export default function Projects() {
                         </div>
                         <form onSubmit={handleSave} className="space-y-4">
                             <input placeholder="Title" value={form.title} onChange={e=>setForm({...form, title: e.target.value})} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm" required/>
-                            <select value={form.category} onChange={e=>setForm({...form, category: e.target.value})} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm">
-                                <option>Software</option>
-                                <option>Hardware</option>
-                                <option>Tool</option>
-                            </select>
                             <textarea placeholder="Description" value={form.description} onChange={e=>setForm({...form, description: e.target.value})} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm" rows="3" required/>
                             <input placeholder="Tech Stack (comma separated)" value={form.techStack} onChange={e=>setForm({...form, techStack: e.target.value})} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm" />
                             <div className="grid grid-cols-2 gap-4">
@@ -191,8 +185,7 @@ function ProjectCard({ p, isAdmin, editProject, deleteProject, itemVariants }) {
 
             <div className="space-y-6">
                 <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-400">{p.category}</span>
+                    <div className="flex justify-end items-center">
                         <div className="flex gap-3">
                             {(p.techStack?.split(',') || []).slice(0, 3).map(tech => (
                                 <span key={tech} className="text-[9px] font-bold uppercase tracking-widest text-stone-500 opacity-60">{tech.trim()}</span>
